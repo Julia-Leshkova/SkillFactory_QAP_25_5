@@ -35,8 +35,8 @@ def test_show_my_pets():
     # Нажимаем на кнопку для перехода к списку своих питомцев
     pytest.driver.find_element_by_xpath('//*[@href="/my_pets"]').click()
 
-    # явное ожидание закоментировала, т.к. возникает ошибка: NameError: name 'driver' is not defined
-    # WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '#navbarNav[href="/ my_pets"]')))
+    # явное ожидание 10 сек.
+    WebDriverWait(pytest.driver, 10).until(EC.presence_of_element_located((By.ID, 'all_my_pets')))
 
 
     # Проверяем, что мы оказались на странице со списком своих питомцев
